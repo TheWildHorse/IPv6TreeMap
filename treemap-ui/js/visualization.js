@@ -71,27 +71,32 @@ function loadDatasets() {
    })
 }
 
+var tree = null
+
 function drawChart() {
   $('#size_metric,#color_metric').on('change', function() {
     drawChart();
   });
 
+  dataset1 = datasets[$('#size_metric').val()]
+  dataset2 = datasets[$('#color_metric').val()]
+
   var rawData = [
-    ['Country', 'RIR', 'IPv6 Adoption', 'GDP'],
+    ['Country', 'RIR', dataset1.label, dataset2.label],
     ['World', null, 0, 0],
   ];
 
-  dataset1 = datasets[$('#size_metric').val()].data
-  dataset2 = datasets[$('#color_metric').val()].data
-
   allCountries.forEach(function(country) {
-    if(countryToRIR(country) !== undefined && dataset1[country] !== undefined && dataset2[country] !== undefined &&
-     countryToRIR(country) !== null && dataset1[country] !== null && dataset2[country] !== null)
-      rawData.push([country, 'World', dataset1[country], dataset2[country]]);
+    if(countryToRIR(country) !== undefined && dataset1.data[country] !== undefined && dataset2.data[country] !== undefined &&
+     countryToRIR(country) !== null && dataset1.data[country] !== null && dataset2.data[country] !== null)
+      rawData.push([country, 'World', dataset1.data[country], dataset2.data[country]]);
   });
 
 
   var data = google.visualization.arrayToDataTable(rawData);
+  if(tree !== null) {
+    tree.clearChart()
+  }
   tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
   tree.draw(data, {
     minColor: '#0066cc',
@@ -103,8 +108,8 @@ function drawChart() {
       return   '<div class="alert alert-info">' +
       '<b>' + countryNames[data.getValue(row, 0)] + '</b><br />' +
       'row: ' + row + '<br />' + 
-      'size: ' + size + '<br />' + 
-      'value: ' + value +  '<br />' + 
+      dataset2.label + ': ' + size + '<br />' + 
+      dataset1.label + ': ' + value +  '<br />' + 
       '</div>';
     },
   });
