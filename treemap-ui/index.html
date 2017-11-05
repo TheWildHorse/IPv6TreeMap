@@ -19,50 +19,36 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="js/visualization.js"></script>
   </head>
-    
-    
-    
+
   <body>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">IPv6 Treemap Vizzz</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <!--
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          -->
-          <li class="nav-item dropdown" style="float: right">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        
-      </div>
-    </nav>
+        <a class="navbar-brand" href="#">IPv6 Treemap Vizzz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="https://github.com/TheWildHorse/IPv6TreeMap">Get doce on GitHub</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Data sources</a>
+				</li>
+			</ul>
+		</div>
+     </nav>
       
       
     <main role="main" class="container-fluid">
         <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <div id="chart_div" style="width: 900px; height: 500px;"></div>
+            <div class="col-sm-12 col-md-12 col-lg-9">
+                <div id="chart_div"></div>
             </div>
-            <div class="col"></div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+				<div id="configuration_div">
+					<h1>Configuration</h1>
+				</div>
+            </div>
         </div>
       </main><!-- /.container -->
       
