@@ -108,8 +108,8 @@ function drawChart() {
       return   '<div class="alert alert-info">' +
       '<b>' + countryNames[data.getValue(row, 0)] + '</b> (' + data.getValue(row, 0) + ')<br />' +
       'RIR: ' + countryToRIR(data.getValue(row, 0)) + '<br />' + 
-      dataset2.label + ': ' + size + '<br />' + 
-      dataset1.label + ': ' + value +  '<br />' + 
+      dataset1.label + ': ' + dataset1.data[data.getValue(row, 0)] + '<br />' + 
+      dataset2.label + ': ' + dataset2.data[data.getValue(row, 0)] +  '<br />' + 
       '</div>';
     },
   });
