@@ -32,7 +32,7 @@ def create_jsons(raw_data):
     allocated = raw_data.query('(status == "allocated" or status == "assigned") and (af == "ipv4" or af == "ipv6")')
     ipv4_allocated = allocated.query('af == "ipv4"')
     ipv6_allocated = allocated.query('af == "ipv6"').copy()
-    asns = raw_data.query('af == "asn" and status == "allocated"')
+    asns = raw_data.query('af == "asn" and (status == "allocated" or status == "assigned")')
 
     ipv6_allocated['num64s'] = ipv6_allocated.range.map(rangeto64)
 
@@ -49,7 +49,6 @@ def create_jsons(raw_data):
 
 # fetch files
 def fetch_files(date="today"):
-    date = date
     year = month = day = 0
     if date == "today": # actually, yesterday
         now = datetime.datetime.now() - datetime.timedelta(days=1)
@@ -94,8 +93,9 @@ def read_files(filenames):
         print("reading", f);
         df = pd.read_csv(f, skiprows=4, sep='|', index_col=False, low_memory=False,
         names=['rir', 'cc', 'af', 'address', 'range', 'date', 'status', 'userid'])
-    tmp_list.append(df)
+        tmp_list.append(df)
     raw_data = pd.concat(tmp_list)
+    print("total rows:", len(raw_data))
     return raw_data
 
 if __name__ == "__main__":
