@@ -39,33 +39,28 @@
 
     <main role="main" class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-9">
-                <div id="chart_div"></div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-3">
-                <div id="configuration_div">
-                    <h1>Configuration</h1>
-                    Size: <select id="size_metric"></select>
-                    <br>
-                    Color: <select id="color_metric"></select>
-
-                    <div class="filter country">
-                    </div>
-                    <button id="select_all">Select All</button>
-                    <button id="deselect_all">Deselect All</button>
-                    <form id="advanced-filter">
-                      <select class="dataset" style="width: 40%">
-                      </select>
-                      <select class="operation">
-                        <option value="<"><</option>
-                        <option value="=">=</option>
-                        <option value=">">></option>
-                      </select>
-                      <input class="amount" type="number"  style="width: 40%">
-                      <br>
-                      <button style="width: 100%">Deselect By Filter</button>
-                    </div>
-                </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+				<h1>Data sources</h1>
+				We have gathered data from different sources, listed below:
+				
+				<h2>RIR Stats files</h2>
+				<ul>
+					<li><a href="http://ftp.ripe.net/pub/stats/ripencc/YYYY/delegated-ripencc-extended-YYYYMMDD.bz2">RIPE NCC</a></li>
+					<li><a href="http://ftp.arin.net/pub/stats/arin/delegated-arin-extended-YYYYMMDD">ARIN</a></li>
+					<li><a href="http://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-extended-YYYYMMDD">LACNIC</a></li>
+					<li><a href="http://ftp.apnic.net/stats/apnic/YYYY/delegated-apnic-extended-YYYYMMDD.gz">APNIC</a></li>
+					<li><a href="http://ftp.afrinic.net/pub/stats/afrinic/YYYY/delegated-afrinic-extended-YYYYMMDD">AFRINIC</a></li>
+				</ul>
+				
+				<h2>ATLAS Probe data</h2>
+				<ul>
+					<li><a href="https://ftp.ripe.net/ripe/atlas/probes/archive/">Archives</a></li>
+				</ul>
+				
+				<h2>The World Bank data bank</h2>
+				<ul>
+					<li><a href="http://databank.worldbank.org/data/home.aspx">Data Bank</a></li>
+				</ul>
             </div>
         </div>
     </main>
@@ -76,7 +71,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/visualization.js"></script>
 </body>
 
 </html>
