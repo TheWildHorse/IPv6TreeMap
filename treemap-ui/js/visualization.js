@@ -78,6 +78,7 @@ function drawChart() {
       rawData.push([country, 'World', dataset1[country], dataset2[country]]);
   });
 
+
   var data = google.visualization.arrayToDataTable(rawData);
   tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
   tree.draw(data, {
@@ -87,7 +88,7 @@ function drawChart() {
     fontColor: 'black',
     showScale: true,
     generateTooltip: function(row, size, value) {
-      return   '<div style="border: solid 1px #ccc; border-radius: 5px; background-color: #eee; padding: 15px">' +
+      return   '<div class="alert alert-info">' +
       '<b>' + countryNames[data.getValue(row, 0)] + '</b><br />' +
       'row: ' + row + '<br />' + 
       'size: ' + size + '<br />' + 
