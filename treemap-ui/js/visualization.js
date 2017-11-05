@@ -59,18 +59,30 @@ function loadDatasets() {
         datasets[i].data = input[count]
         count++
       });
+      options = ""
+      $.each(datasets, function(i, option) {
+        options += "<option value=\""+ i +"\">" + option.name + "</option>"
+      }) 
+      $('#size_metric').html(options);
+      $('#size_metric > option[value="ratio_v6_v4.json"]').prop("selected", true);
+      $('#color_metric').html(options);
+      $('#color_metric > option[value="gdp_2016.json"]').prop("selected", true);
       drawChart();
    })
 }
 
 function drawChart() {
+  $('#size_metric,#color_metric').on('change', function() {
+    drawChart();
+  });
+
   var rawData = [
     ['Country', 'RIR', 'IPv6 Adoption', 'GDP'],
     ['World', null, 0, 0],
   ];
 
-  dataset1 = datasets["gdp_2016.json"].data
-  dataset2 = datasets["ratio_v6_v4.json"].data
+  dataset1 = datasets[$('#size_metric').val()].data
+  dataset2 = datasets[$('#color_metric').val()].data
 
   allCountries.forEach(function(country) {
     if(countryToRIR(country) !== undefined && dataset1[country] !== undefined && dataset2[country] !== undefined &&
