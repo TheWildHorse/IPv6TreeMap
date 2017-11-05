@@ -33,6 +33,11 @@ var datasets = {
     name: "/64 Allocations",
     label: "/64 Allocations",
   },
+  "num_asns_per_cc.json": {
+    data: null,
+    name: "Number of ASNs",
+    label: "Number of ASNs",
+  },
   "population.json": {
     data: null,
     name: "Population",
@@ -42,6 +47,26 @@ var datasets = {
     data: null,
     name: "IPv6 Adoption",
     label: "IPv6 Adoption (%)",
+  },
+  "v6atlas.json": {
+    data: null,
+    name: "Number of atlas probes on v6",
+    label: "Number of atlas probes on v6",
+  },
+  "v4atlas.json": {
+    data: null,
+    name: "Number of atlas probes on v4",
+    label: "Number of atlas probes on v4",
+  },
+  "v6atlasuptime.json": {
+    data: null,
+    name: "Total uptime of atlas probes with v6",
+    label: "Total uptime of atlas probes with v6",
+  },
+  "v4atlasuptime.json": {
+    data: null,
+    name: "Total uptime of atlas probes with v4",
+    label: "Total uptime of atlas probes with v4",
   },
 };
 
