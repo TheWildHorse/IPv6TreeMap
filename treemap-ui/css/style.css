@@ -24,3 +24,8 @@ IPv6 Treemap Viz style sheet
 	overflow: scroll;
 	margin: 20px 0;
 }
+
+#advanced-filter {
+	text-align: center;
+	margin: 20px 0;
+}

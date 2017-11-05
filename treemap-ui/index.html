@@ -53,7 +53,18 @@
                     </div>
                     <button id="select_all">Select All</button>
                     <button id="deselect_all">Deselect All</button>
-                    <button id="deselect_low_pop">Deselect Low Population Countries</button>
+                    <form id="advanced-filter">
+                      <select class="dataset" style="width: 40%">
+                      </select>
+                      <select class="operation">
+                        <option value="<"><</option>
+                        <option value="=">=</option>
+                        <option value=">">></option>
+                      </select>
+                      <input class="amount" type="number"  style="width: 40%">
+                      <br>
+                      <button style="width: 100%">Deselect By Filter</button>
+                    </div>
                 </div>
             </div>
         </div>

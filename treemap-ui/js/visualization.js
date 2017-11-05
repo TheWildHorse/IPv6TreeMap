@@ -68,6 +68,7 @@ function loadDatasets() {
       $('#size_metric > option[value="ratio_v6_v4.json"]').prop("selected", true);
       $('#color_metric').html(options);
       $('#color_metric > option[value="gdp_2016.json"]').prop("selected", true);
+      $('#advanced-filter .dataset').html(options);
       drawChart();
    })
 }
@@ -138,7 +139,6 @@ function filterChart() {
   $('.filter.country input:checked').each(function() {
     selectedCountries.push($(this).data('country-code'))
   })
-  console.log(selectedCountries)
   drawChart()
 }
 $('.filter.country input').click(filterChart)
@@ -150,4 +150,36 @@ $('#deselect_all').click(function() {
   $('.filter.country input').prop('checked', false)
   filterChart()
 });
+
+// Advanced filter
+$("#advanced-filter").submit(function(e) {
+  e.preventDefault()
+  datasetName = $("#advanced-filter .dataset").val()
+  operation = $("#advanced-filter .operation").val()
+  value = $("#advanced-filter .amount").val()
+
+  newSelectedCountries = []
+  selectedCountries.forEach(function(country) {
+    pluckOut = false;
+    switch(operation) {
+      case '>':
+        if(datasets[datasetName].data[country] > value)
+          pluckOut = true;
+        break;
+      case '=':
+        if(datasets[datasetName].data[country] == value)
+          pluckOut = true;
+        break;
+      case '<':
+        if(datasets[datasetName].data[country] < value)
+          pluckOut = true;
+        break;
+    }
+
+    if(pluckOut) {
+      $('.filter.country input[data-country-code='+country+']').prop('checked', false)
+    } 
+  })
+  filterChart()
+})
 
