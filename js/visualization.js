@@ -168,14 +168,15 @@ function drawBubbleChart() {
   dataset2 = datasets[$('#color_metric').val()]
 
   var rawData = [
-    ['Country', dataset1.label, dataset2.label],
+    ['Country', dataset1.label, dataset2.label, 'RIR'],
   ];
 
   selectedCountries.forEach(function(country) {
-    if(dataset1.data[country] !== undefined && dataset2.data[country] !== undefined &&
-     dataset1.data[country] !== null && dataset2.data[country] !== null)
-      rawData.push([country, dataset1.data[country], dataset2.data[country]]);
+    if(countryToRIR(country) !== undefined && dataset1.data[country] !== undefined && dataset2.data[country] !== undefined &&
+     countryToRIR(country) !== null && dataset1.data[country] !== null && dataset2.data[country] !== null)
+      rawData.push([country, dataset1.data[country], dataset2.data[country], countryToRIR(country)]);
   });
+
 
 
   var data = google.visualization.arrayToDataTable(rawData);
