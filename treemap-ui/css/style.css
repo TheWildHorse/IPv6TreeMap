@@ -18,3 +18,9 @@ IPv6 Treemap Viz style sheet
 	width: 100%;
 	height: 90vh;
 }
+
+.filter.country {
+	height: 200px;
+	overflow: scroll;
+	margin: 20px 0;
+}
