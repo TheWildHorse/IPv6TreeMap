@@ -16,6 +16,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/popper.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
@@ -45,6 +46,10 @@
             <div class="col-sm-12 col-md-12 col-lg-3">
                 <div id="configuration_div">
                     <h1>Configuration</h1>
+                    <div>
+                        <button class="chart-type" data-type="tree">Tree Map</button>
+                        <button class="chart-type" data-type="bubble">Bubble Chart</button>
+                    </div>
                     Size: <select id="size_metric"></select>
                     <br>
                     Color: <select id="color_metric"></select>

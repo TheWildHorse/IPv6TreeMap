@@ -99,8 +99,18 @@ function loadDatasets() {
 }
 
 var tree = null
+var selectedChart = "tree";
 
 function drawChart() {
+  if(selectedChart == "tree") {
+    drawTreeChart()
+  }
+  else {
+    drawBubbleChart()
+  }
+}
+
+function drawTreeChart() {
   $('#size_metric,#color_metric').on('change', function() {
     drawChart();
   });
@@ -149,7 +159,45 @@ function drawChart() {
   });
 }
 
-google.charts.load('current', {'packages':['treemap']});
+function drawBubbleChart() {
+  $('#size_metric,#color_metric').on('change', function() {
+    drawChart();
+  });
+
+  dataset1 = datasets[$('#size_metric').val()]
+  dataset2 = datasets[$('#color_metric').val()]
+
+  var rawData = [
+    ['Country', dataset1.label, dataset2.label],
+  ];
+
+  selectedCountries.forEach(function(country) {
+    if(dataset1.data[country] !== undefined && dataset2.data[country] !== undefined &&
+     dataset1.data[country] !== null && dataset2.data[country] !== null)
+      rawData.push([country, dataset1.data[country], dataset2.data[country]]);
+  });
+
+
+  var data = google.visualization.arrayToDataTable(rawData);
+  if(tree !== null) {
+    tree.clearChart()
+  }
+  tree = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+  google.visualization.events.addListener(tree, 'ready', function() {
+    $('.hide-node').click(function() {
+      $('.filter.country input[data-country-code='+$(this).data('country-code')+']').prop('checked', false)
+      filterChart()
+    })
+  })
+  tree.draw(data, {
+    hAxis: {title: dataset1.label},
+    vAxis: {title: dataset2.label},
+    bubble: {textStyle: {fontSize: 11}}
+  });
+}
+
+
+google.charts.load('current', {'packages':['corechart', 'treemap']});
 google.charts.setOnLoadCallback(loadDatasets);
 
 
@@ -206,5 +254,11 @@ $("#advanced-filter").submit(function(e) {
     } 
   })
   filterChart()
+})
+
+// Chart types
+$('.chart-type').click(function() {
+  selectedChart = $(this).data('type')
+  drawChart()
 })
 
